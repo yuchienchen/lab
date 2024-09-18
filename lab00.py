@@ -1,14 +1,16 @@
-def twenty_twenty_four(x):
+def twenty_twenty_four():
     
-    return int(str(g(g(x))) + str((f(f(f(x))))) + str(f(x)))
+    return int(str((5 * 2) * 2) + str(((5 - 1) - 1) - 1) + str(5 - 1))
 
-def f(x):
-    return x - 1
+print(twenty_twenty_four())
 
-def g(x):
-    return x * 2
+# def f(x):
+#     return x - 1
 
-def h(x, y):
-    return int(str(x) + str(y))
+# def g(x):
+#     return x * 2
 
-print(twenty_twenty_four(5))
+# def h(x, y):
+#     return int(str(x) + str(y))
+
+# print(twenty_twenty_four(5))
