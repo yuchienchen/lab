@@ -16,13 +16,11 @@ def composite_identity(f, g):
     False
     """
     def h(x):
-        return f(g(x)), g(f(x))
+        if f(g(x)) == g(f(x)):
+            return True
+        else:
+            return False
     return h
- 
-    if f(g(x)) == g(f(x)):
-        return True
-    else:
-        return False
     
 doctest.testmod(name='composite_identity')
 
