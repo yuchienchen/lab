@@ -15,11 +15,14 @@ def composite_identity(f, g):
     >>> b1(4)                            # (4 + 1) ** 2 != 4 ** 2 + 1
     False
     """
+    # No tuple returns; check '==' within the h function itself
     def h(x):
-        if f(g(x)) == g(f(x)):
-            return True
-        else:
-            return False
+        """
+        don't need the if condition to explicitly return True or False,
+        directly returning the result of f(g(x)) == g(f(x)). 
+        This expression already evaluates to True or False.
+        """
+        return f(g(x)) == g(f(x))
     return h
     
 doctest.testmod(name='composite_identity')
