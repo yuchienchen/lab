@@ -24,6 +24,8 @@ def composite_identity(f, g):
         """
         return f(g(x)) == g(f(x))
     return h
+
+# identity_check = composite_identity(f, g)
     
 doctest.testmod(name='composite_identity')
 
@@ -81,8 +83,16 @@ def multiple(a, b):
     >>> multiple(14, 21)
     42
     """
-    "*** YOUR CODE HERE ***"
-
+    def h(n):
+        if a < b:
+            for n in range(b, a * b, 1):
+                if n % a == 0 and n % b == 0:
+                    return n
+        if a > b: 
+            for n in range(a, a * b, 1):
+                if n % a == 0 and n % b == 0:
+                    return n
+        return h
 
 
 def cycle(f1, f2, f3):
