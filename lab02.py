@@ -119,6 +119,16 @@ def cycle(f1, f2, f3):
     >>> do_two_cycles = my_cycle(6)
     >>> do_two_cycles(1)
     19
-    """
-    "*** YOUR CODE HERE ***"
+    """ 
+    def g(n):
+        def h(x):
+            # return f(n, x)
+            # if n == 0:
+            #     return x
+            for n in range(3 * n + 1):
+                return f(n, x)
+            for n in range(4, 7):
+                return f1(f3(f2(f1(x)))), f2(f1(f3(f2(f1(x))))), f3(f2(f1(f3(f2(f1(x))))))
+        return h
+    return g
 
