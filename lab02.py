@@ -85,13 +85,12 @@ def multiple(a, b):
     """
     # Do not need the parameter n
     def h():
-        if a < b:
-            # no need for two conditions; The range limit a * b should be inclusive or slightly larger because it's the product of a and b
-            for n in range(max(a, b), a * b + 1):
-                if n % a == 0 and n % b == 0:
-                    return n
+        # no need for two conditions; The range limit a * b should be inclusive or slightly larger because it's the product of a and b
+        for n in range(max(a, b), a * b + 1):
+            if n % a == 0 and n % b == 0:
+                return n
                 
-        return h()
+    return h()
 
 
 def cycle(f1, f2, f3):
