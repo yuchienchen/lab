@@ -123,12 +123,29 @@ def cycle(f1, f2, f3):
     def g(n):
         def h(x):
             # return f(n, x)
-            # if n == 0:
-            #     return x
-            for n in range(3 * n + 1):
-                return f(n, x)
-            for n in range(4, 7):
-                return f1(f3(f2(f1(x)))), f2(f1(f3(f2(f1(x))))), f3(f2(f1(f3(f2(f1(x))))))
+            """
+            Seperate n == 0 from the other conditions
+            """
+            if n == 0:
+                return x
+            
+            """
+            cycle through (1, 4), (4, 7), (7,9), ...
+            """
+            while True:
+
+                """
+                from n == 1, so range(1, 4) => 3 outputs; 
+                n == 2...
+                n == 3...
+                """
+                if n > 0:
+                    for n in range((3 * n - 2), (3 * n + 1)):
+                        def f(n, x):
+                            def k(y):
+                                return n(x(y))
+                            return k
+                        return f
         return h
     return g
 
