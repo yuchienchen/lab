@@ -3,41 +3,42 @@
 # import doctest
 
 
-def print_if(s, f):
-    """Print each element of s for which f returns a true value.
+# def print_if(s, f):
+#     """Print each element of s for which f returns a true value.
 
-    >>> print_if([3, 4, 5, 6], lambda x: x > 4)
-    5
-    6
-    >>> result = print_if([3, 4, 5, 6], lambda x: x % 2 == 0)
-    4
-    6
-    >>> print(result)  # print_if should return None
-    None
-    """
-    for x in s:
-        if f(x):
-            print(x)
+#     >>> print_if([3, 4, 5, 6], lambda x: x > 4)
+#     5
+#     6
+#     >>> result = print_if([3, 4, 5, 6], lambda x: x % 2 == 0)
+#     4
+#     6
+#     >>> print(result)  # print_if should return None
+#     None
+#     """
+#     for x in s:
+#         if f(x):
+#             print(x)
 
 # doctest.testmod(name='print_if')
 
-# def close(s, k):
-#     """Return how many elements of s that are within k of their index.
+def close(s, k):
+    """Return how many elements of s that are within k of their index.
 
-#     >>> t = [6, 2, 4, 3, 5]
-#     >>> close(t, 0)  # Only 3 is equal to its index
-#     1
-#     >>> close(t, 1)  # 2, 3, and 5 are within 1 of their index
-#     3
-#     >>> close(t, 2)  # 2, 3, 4, and 5 are all within 2 of their index
-#     4
-#     >>> close(list(range(10)), 0)
-#     10
-#     """
-#     count = 0
-#     for i in range(len(s)):  # Use a range to loop over indices
-#         "*** YOUR CODE HERE ***"
-#     return count
+    >>> t = [6, 2, 4, 3, 5]
+    >>> close(t, 0)  # Only 3 is equal to its index
+    1
+    >>> close(t, 1)  # 2, 3, and 5 are within 1 of their index
+    3
+    >>> close(t, 2)  # 2, 3, 4, and 5 are all within 2 of their index
+    4
+    >>> close(list(range(10)), 0)
+    10
+    """
+    count = 0
+    for i in range(len(s)):  # Use a range to loop over indices
+        if abs(i - s[i]) <= k:
+            count += 1
+    return count
 
 
 # def close_list(s, k):
