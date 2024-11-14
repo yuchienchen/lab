@@ -41,34 +41,34 @@
 #     return count
 
 
-def close_list(s, k):
-    """Return a list of the elements of s that are within k of their index.
+# def close_list(s, k):
+#     """Return a list of the elements of s that are within k of their index.
 
-    >>> t = [6, 2, 4, 3, 5]
-    >>> close_list(t, 0)  # Only 3 is equal to its index
-    [3]
-    >>> close_list(t, 1)  # 2, 3, and 5 are within 1 of their index
-    [2, 3, 5]
-    >>> close_list(t, 2)  # 2, 3, 4, and 5 are all within 2 of their index
-    [2, 4, 3, 5]
-    """
-    return [s[i] for i in range(len(s)) if abs(i - s[i]) <= k]
-
-
-# from math import sqrt
-
-# def squares(s):
-#     """Returns a new list containing square roots of the elements of the
-#     original list that are perfect squares.
-
-#     >>> seq = [8, 49, 8, 9, 2, 1, 100, 102]
-#     >>> squares(seq)
-#     [7, 3, 1, 10]
-#     >>> seq = [500, 30]
-#     >>> squares(seq)
-#     []
+#     >>> t = [6, 2, 4, 3, 5]
+#     >>> close_list(t, 0)  # Only 3 is equal to its index
+#     [3]
+#     >>> close_list(t, 1)  # 2, 3, and 5 are within 1 of their index
+#     [2, 3, 5]
+#     >>> close_list(t, 2)  # 2, 3, 4, and 5 are all within 2 of their index
+#     [2, 4, 3, 5]
 #     """
-#     return [___ for n in s if ___]
+#     return [s[i] for i in range(len(s)) if abs(i - s[i]) <= k]
+
+
+from math import sqrt
+
+def squares(s):
+    """Returns a new list containing square roots of the elements of the
+    original list that are perfect squares.
+
+    >>> seq = [8, 49, 8, 9, 2, 1, 100, 102]
+    >>> squares(seq)
+    [7, 3, 1, 10]
+    >>> seq = [500, 30]
+    >>> squares(seq)
+    []
+    """
+    return [sqrt(n) for n in s if sqrt(n) == round(sqrt(n))]
 
 
 # def double_eights(n):
