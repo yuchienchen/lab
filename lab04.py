@@ -1,13 +1,13 @@
-def divide(quotients, divisors):
-    """Return a dictonary in which each quotient q is a key for the list of
-    divisors that it divides evenly.
+# def divide(quotients, divisors):
+#     """Return a dictonary in which each quotient q is a key for the list of
+#     divisors that it divides evenly.
 
-    >>> divide([3, 4, 5], [8, 9, 10, 11, 12])
-    {3: [9, 12], 4: [8, 12], 5: [10]}
-    >>> divide(range(1, 5), range(20, 25))
-    {1: [20, 21, 22, 23, 24], 2: [20, 22, 24], 3: [21, 24], 4: [20, 24]}
-    """
-    return {q: [d for d in divisors if d % q == 0] for q in quotients}
+#     >>> divide([3, 4, 5], [8, 9, 10, 11, 12])
+#     {3: [9, 12], 4: [8, 12], 5: [10]}
+#     >>> divide(range(1, 5), range(20, 25))
+#     {1: [20, 21, 22, 23, 24], 2: [20, 22, 24], 3: [21, 24], 4: [20, 24]}
+#     """
+#     return {q: [d for d in divisors if d % q == 0] for q in quotients}
 
 
 # def buy(fruits_to_buy, prices, total_amount):
@@ -54,19 +54,34 @@ def divide(quotients, divisors):
 
 
 
-# from math import sqrt
-# def distance(city_a, city_b):
-#     """
-#     >>> city_a = make_city('city_a', 0, 1)
-#     >>> city_b = make_city('city_b', 0, 2)
-#     >>> distance(city_a, city_b)
-#     1.0
-#     >>> city_c = make_city('city_c', 6.5, 12)
-#     >>> city_d = make_city('city_d', 2.5, 15)
-#     >>> distance(city_c, city_d)
-#     5.0
-#     """
-#     "*** YOUR CODE HERE ***"
+from math import sqrt
+def distance(city_a, city_b):
+    """
+    >>> city_a = make_city('city_a', 0, 1)
+    >>> city_b = make_city('city_b', 0, 2)
+    >>> distance(city_a, city_b)
+    1.0
+    >>> city_c = make_city('city_c', 6.5, 12)
+    >>> city_d = make_city('city_d', 2.5, 15)
+    >>> distance(city_c, city_d)
+    5.0
+    """
+    lat_city_a, lon_city_a = get_lat(city_a), get_lon(city_a)
+    lat_city_b, lon_city_b = get_lat(city_b), get_lon(city_b)
+    return sqrt((lat_city_a - lat_city_b)**2 + (lon_city_a - lon_city_b)**2)
+
+def make_city(name, lat, lon):
+    return [name, lat, lon]
+
+def get_name(city):
+    return city[0]
+
+def get_lat(city):
+    return city[1]
+
+def get_lon(city):
+    return city[2]
+
 
 # def closer_city(lat, lon, city_a, city_b):
 #     """
