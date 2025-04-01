@@ -29,6 +29,9 @@ def insert_items(s, before, after):
     for i in range(len(s)):
         if s[i] == before:
             s.insert(i + 1, after)
+            if before == after:
+                # s.insert(i + 1, after)
+                break
     return s
 
 
