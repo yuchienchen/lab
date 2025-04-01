@@ -32,48 +32,54 @@ HW_SOURCE_FILE=__file__
 #     return s
 
 
-def group_by(s, fn):
-    """Return a dictionary of lists that together contain the elements of s.
-    The key for each list is the value that fn returns when called on any of the
-    values of that list.
+# def group_by(s, fn):
+#     """Return a dictionary of lists that together contain the elements of s.
+#     The key for each list is the value that fn returns when called on any of the
+#     values of that list.
 
-    >>> group_by([12, 23, 14, 45], lambda p: p // 10)
-    {1: [12, 14], 2: [23], 4: [45]}
-    >>> group_by(range(-3, 4), lambda x: x * x)
-    {9: [-3, 3], 4: [-2, 2], 1: [-1, 1], 0: [0]}
-    """
-    grouped = {}
-    for e in s:
-        key = fn(e)
-        if key in grouped:
-            grouped[key] += [e]
-        else:
-            grouped[key] = [e]
-    return grouped
-
-
-# def count_occurrences(t, n, x):
-#     """Return the number of times that x is equal to one of the
-#     first n elements of iterator t.
-
-#     >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-#     >>> count_occurrences(s, 10, 9)
-#     3
-#     >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-#     >>> count_occurrences(t, 3, 10)
-#     2
-#     >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
-#     >>> count_occurrences(u, 1, 3)  # Only iterate over 3
-#     1
-#     >>> count_occurrences(u, 3, 2)  # Only iterate over 2, 2, 2
-#     3
-#     >>> list(u)                     # Ensure that the iterator has advanced the right amount
-#     [1, 2, 1, 4, 4, 5, 5, 5]
-#     >>> v = iter([4, 1, 6, 6, 7, 7, 6, 6, 2, 2, 2, 5])
-#     >>> count_occurrences(v, 6, 6)
-#     2
+#     >>> group_by([12, 23, 14, 45], lambda p: p // 10)
+#     {1: [12, 14], 2: [23], 4: [45]}
+#     >>> group_by(range(-3, 4), lambda x: x * x)
+#     {9: [-3, 3], 4: [-2, 2], 1: [-1, 1], 0: [0]}
 #     """
-#     "*** YOUR CODE HERE ***"
+#     grouped = {}
+#     for e in s:
+#         key = fn(e)
+#         if key in grouped:
+#             grouped[key] += [e]
+#         else:
+#             grouped[key] = [e]
+#     return grouped
+
+
+def count_occurrences(t, n, x):
+    """Return the number of times that x is equal to one of the
+    first n elements of iterator t.
+
+    >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+    >>> count_occurrences(s, 10, 9)
+    3
+    >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+    >>> count_occurrences(t, 3, 10)
+    2
+    >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
+    >>> count_occurrences(u, 1, 3)  # Only iterate over 3
+    1
+    >>> count_occurrences(u, 3, 2)  # Only iterate over 2, 2, 2
+    3
+    >>> list(u)                     # Ensure that the iterator has advanced the right amount
+    [1, 2, 1, 4, 4, 5, 5, 5]
+    >>> v = iter([4, 1, 6, 6, 7, 7, 6, 6, 2, 2, 2, 5])
+    >>> count_occurrences(v, 6, 6)
+    2
+    """
+    count = 0
+    t = list(t)    # convert t to a list: t is a list iterator, not a list. In Python, iterators don’t support indexing (e.g., t[i]), whereas lists do
+    n = int(n)    # convert n to an integer:  If n is set to an iterator (e.g., n = iter(range(10))), you need to convert it to an integer.  range(n) expects n to be an integer, not an iterator
+    for i in range(n):
+        if t[i] == x:
+            count += 1
+    return count
 
 
 # def repeated(t, k):
