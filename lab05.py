@@ -46,7 +46,7 @@ def group_by(s, fn):
     for e in s:
         key = fn(e)
         if key in grouped:
-            grouped[key] = [e]
+            grouped[key] += [e]
         else:
             grouped[key] = [e]
     return grouped
