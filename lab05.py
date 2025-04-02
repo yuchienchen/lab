@@ -52,57 +52,69 @@ HW_SOURCE_FILE=__file__
 #     return grouped
 
 
-def count_occurrences(t, n, x):
-    """Return the number of times that x is equal to one of the
-    first n elements of iterator t.
-
-    >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-    >>> count_occurrences(s, 10, 9)
-    3
-    >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-    >>> count_occurrences(t, 3, 10)
-    2
-    >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
-    >>> count_occurrences(u, 1, 3)  # Only iterate over 3
-    1
-    >>> count_occurrences(u, 3, 2)  # Only iterate over 2, 2, 2
-    3
-    >>> list(u)                     # Ensure that the iterator has advanced the right amount
-    [1, 2, 1, 4, 4, 5, 5, 5]
-    >>> v = iter([4, 1, 6, 6, 7, 7, 6, 6, 2, 2, 2, 5])
-    >>> count_occurrences(v, 6, 6)
-    2
-    """
-    count = 0
-    t = list(t)    # convert t to a list: t is a list iterator, not a list. In Python, iterators don’t support indexing (e.g., t[i]), whereas lists do
-    n = int(n)    # convert n to an integer:  If n is set to an iterator (e.g., n = iter(range(10))), you need to convert it to an integer.  range(n) expects n to be an integer, not an iterator
-    for i in range(n):
-        if t[i] == x:
-            count += 1
-    return count
-
-
-# def repeated(t, k):
-#     """Return the first value in iterator t that appears k times in a row,
-#     calling next on t as few times as possible.
+# def count_occurrences(t, n, x):
+#     """Return the number of times that x is equal to one of the
+#     first n elements of iterator t.
 
 #     >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-#     >>> repeated(s, 2)
-#     9
+#     >>> count_occurrences(s, 10, 9)
+#     3
 #     >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-#     >>> repeated(t, 3)
-#     8
-#     >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
-#     >>> repeated(u, 3)
+#     >>> count_occurrences(t, 3, 10)
 #     2
-#     >>> repeated(u, 3)
-#     5
-#     >>> v = iter([4, 1, 6, 6, 7, 7, 8, 8, 2, 2, 2, 5])
-#     >>> repeated(v, 3)
+#     >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
+#     >>> count_occurrences(u, 1, 3)  # Only iterate over 3
+#     1
+#     >>> count_occurrences(u, 3, 2)  # Only iterate over 2, 2, 2
+#     3
+#     >>> list(u)                     # Ensure that the iterator has advanced the right amount
+#     [1, 2, 1, 4, 4, 5, 5, 5]
+#     >>> v = iter([4, 1, 6, 6, 7, 7, 6, 6, 2, 2, 2, 5])
+#     >>> count_occurrences(v, 6, 6)
 #     2
 #     """
-#     assert k > 1
-#     "*** YOUR CODE HERE ***"
+#     count = 0
+#     t = list(t)    # convert t to a list: t is a list iterator, not a list. In Python, iterators don’t support indexing (e.g., t[i]), whereas lists do
+#     n = int(n)    # convert n to an integer:  If n is set to an iterator (e.g., n = iter(range(10))), you need to convert it to an integer.  range(n) expects n to be an integer, not an iterator
+#     for i in range(n):
+#         if t[i] == x:
+#             count += 1
+#     return count
+
+
+def repeated(t, k):
+    """Return the first value in iterator t that appears k times in a row,
+    calling next on t as few times as possible.
+
+    >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+    >>> repeated(s, 2)
+    9
+    >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+    >>> repeated(t, 3)
+    8
+    >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
+    >>> repeated(u, 3)
+    2
+    >>> repeated(u, 3)
+    5
+    >>> v = iter([4, 1, 6, 6, 7, 7, 8, 8, 2, 2, 2, 5])
+    >>> repeated(v, 3)
+    2
+    """
+    assert k > 1
+    count = 0
+    t = list(t)
+    for i in range(len(t) - 1):
+        # i + 2 < len(t)
+        if t[i] == t[i+1]:
+            count += 1
+            if i + 2 >= len(t) or t[i+1] != t[i+2]:
+                count = 0
+            else:
+                count += 1
+                if count == k:
+                    break
+    return t[i]
 
 
 # def sprout_leaves(t, leaves):
