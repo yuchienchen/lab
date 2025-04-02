@@ -82,39 +82,39 @@ HW_SOURCE_FILE=__file__
 #     return count
 
 
-def repeated(t, k):
-    """Return the first value in iterator t that appears k times in a row,
-    calling next on t as few times as possible.
+# def repeated(t, k):
+#     """Return the first value in iterator t that appears k times in a row,
+#     calling next on t as few times as possible.
 
-    >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-    >>> repeated(s, 2)
-    9
-    >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
-    >>> repeated(t, 3)
-    8
-    >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
-    >>> repeated(u, 3)
-    2
-    >>> repeated(u, 3)
-    5
-    >>> v = iter([4, 1, 6, 6, 7, 7, 8, 8, 2, 2, 2, 5])
-    >>> repeated(v, 3)
-    2
-    """
-    assert k > 1
-    count = 0
-    t = list(t)
-    for i in range(len(t) - 1):
-        # i + 2 < len(t)
-        if t[i] == t[i+1]:
-            count += 1
-            if i + 2 >= len(t) or t[i+1] != t[i+2]:
-                count = 0
-            else:
-                count += 1
-                if count == k:
-                    break
-    return t[i]
+#     >>> s = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+#     >>> repeated(s, 2)
+#     9
+#     >>> t = iter([10, 9, 10, 9, 9, 10, 8, 8, 8, 7])
+#     >>> repeated(t, 3)
+#     8
+#     >>> u = iter([3, 2, 2, 2, 1, 2, 1, 4, 4, 5, 5, 5])
+#     >>> repeated(u, 3)
+#     2
+#     >>> repeated(u, 3)
+#     5
+#     >>> v = iter([4, 1, 6, 6, 7, 7, 8, 8, 2, 2, 2, 5])
+#     >>> repeated(v, 3)
+#     2
+#     """
+#     assert k > 1
+#     count = 0
+#     t = list(t)
+#     for i in range(len(t) - 1):
+#         # i + 2 < len(t)
+#         if t[i] == t[i+1]:
+#             count += 1
+#             if i + 2 >= len(t) or t[i+1] != t[i+2]:
+#                 count = 0
+#             else:
+#                 count += 1
+#                 if count == k:
+#                     break
+#     return t[i]
 
 
 # def sprout_leaves(t, leaves):
@@ -153,19 +153,28 @@ def repeated(t, k):
 #     "*** YOUR CODE HERE ***"
 
 
-# def partial_reverse(s, start):
-#     """Reverse part of a list in-place, starting with start up to the end of
-#     the list.
+def partial_reverse(s, start):
+    """Reverse part of a list in-place, starting with start up to the end of
+    the list.
 
-#     >>> a = [1, 2, 3, 4, 5, 6, 7]
-#     >>> partial_reverse(a, 2)
-#     >>> a
-#     [1, 2, 7, 6, 5, 4, 3]
-#     >>> partial_reverse(a, 5)
-#     >>> a
-#     [1, 2, 7, 6, 5, 3, 4]
-#     """
-#     "*** YOUR CODE HERE ***"
+    >>> a = [1, 2, 3, 4, 5, 6, 7]
+    >>> partial_reverse(a, 2)
+    >>> a
+    [1, 2, 7, 6, 5, 4, 3]
+    >>> partial_reverse(a, 5)
+    >>> a
+    [1, 2, 7, 6, 5, 3, 4]
+    """
+    for i in range(len(s)):
+        if len(s) - start <= 1:
+            return s
+        if len(s) - start >= 2:
+            s[start], s[len(s) - 1] = s [len(s) - 1], s[start]
+            return s
+        if len(s) - start > 3:
+            s[start], s[len(s) - 1] = s [len(s) - 1], s[start]
+            s[start + 1], s[len(s) - 2] = s [len(s) - 2], s[start + 1]
+            return s
 
 
 
