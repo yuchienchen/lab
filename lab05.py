@@ -172,8 +172,9 @@ def partial_reverse(s, start):
             s[start], s[len(s) - 1] = s [len(s) - 1], s[start]
             return s
         if len(s) - start > 3:
-            s[start], s[len(s) - 1] = s [len(s) - 1], s[start]
-            s[start + 1], s[len(s) - 2] = s [len(s) - 2], s[start + 1]
+            for i in range(len(s)):
+                s[start + i], s[len(s) - (i+1)] = s [len(s) - (i+1)], s[start + i]
+                # s[start + 1], s[len(s) - 2] = s [len(s) - 2], s[start + 1]
             return s
 
 
